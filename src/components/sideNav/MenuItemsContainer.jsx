@@ -3,7 +3,7 @@ import MenuItem from './MenuItem'
 import { sideNavItems } from '../../meta/sideNav'
 const MenuItemsContainer = () => {
   return (
-    <ul>
+    <ul className='setBorder'>
         {sideNavItems.map((singleItem,index) => {
             if(index === sideNavItems.length - 1){
                 return (

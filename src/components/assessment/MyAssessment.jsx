@@ -3,15 +3,19 @@ import MyAssessmentHeader from './MyAssessmentHeader'
 import NewAssessment from './NewAssessment'
 import Card from './card'
 import Add from '../common/Add'
+import { UseSelector, useSelector } from 'react-redux'
 const MyAssessment = () => {
+  const list = useSelector((state) => state.assignment.list)
   return (
-    <div className='px-[15px] py-[20px]'>
+    <div>
         <MyAssessmentHeader/>
-        <div className='flex flex-col gap-4'>
+        <div className='grid grid-cols-1 sml:grid-cols-2 lgs:grid-cols-3 lgm:grid-cols-4 gap-4'>
           <NewAssessment/>
-          <Card/>
-          <Add className='fixed bottom-[20%] right-[15px]'/>
+          {
+            list.map((item) => <Card key={item.id} {...item}/>)
+          }
         </div>
+          <Add className='fixed z-10 bottom-[20%] right-[15px] sml:hidden'/>
     </div>
   )
 }

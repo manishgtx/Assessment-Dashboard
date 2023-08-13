@@ -4,7 +4,7 @@ import filterIcon from '../../assets/images/assessment/filter.svg'
 import barsIcon from '../../assets/images/assessment/chart.svg'
 const Filter = () => {
   return (
-    <div className='flex items-center'>
+    <div className='flex items-center lg:hidden'>
             <div className='p-2'>
                 <img src={searchIcon} alt="" />
             </div>
