@@ -5,7 +5,8 @@ import MyAssessment from '../components/assessment/MyAssessment'
 import Stats from '../components/stats'
 import Form from '../components/form'
 import { useDispatch,useSelector } from 'react-redux'
-import { openSideBar } from '../store'
+import { closeSideBar, openSideBar } from '../store'
+import Add from '../components/common/Add'
 const Home = () => {
   // Using this to handle menu visiblity on screen size bigger than 640
   const dispatch = useDispatch()
@@ -13,16 +14,21 @@ const Home = () => {
   console.log(sideBar)
   const handleResize = () => {
     const windowWidth = window.innerWidth
-    if(windowWidth > 640) {
-      if(sideBar === false){
+    console.log(windowWidth,'check')
+    if(windowWidth > 639) {
         dispatch(openSideBar())
-      }
+    }
+     if(windowWidth < 640){
+      console.log(sideBar,'sidebar')
+      
+        dispatch(closeSideBar())
+      
     }
 
     
   }
   useEffect(()=> {
-    if(window.innerWidth > 640) {
+    if(window.innerWidth > 639) {
       if(sideBar === false){
         dispatch(openSideBar())
       }
@@ -40,8 +46,10 @@ const Home = () => {
         <div className='flex-grow sm:pl-[20px] bg-primary-blue-8 overflow-y-auto'>
             <Header/>
             <div className='px-[15px] py-[20px] bg-white min-h-full'>
+              <h2 className='hidden lg:block mb-4 text-primary-blue-1 font-medium'>Assessments Overview</h2>
               <Stats/>
               <MyAssessment/>
+              <Add className='fixed z-[40] bottom-[20%] right-[15px] sml:hidden'/>
             </div>
             <Form/>
         </div>

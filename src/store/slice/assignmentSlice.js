@@ -5,7 +5,8 @@ const assignmentSlice = createSlice({
     initialState:{
         list:[],
         modal:false,
-        sideBar:false
+        sideBar:false,
+        stats:true,
     },
     reducers:{
         openSideBar(state){
@@ -23,11 +24,17 @@ const assignmentSlice = createSlice({
         addAssessment(state,action){
             state.list.push(action.payload)
             state.modal = false
+        },
+        handleStats(state){
+            state.stats = !state.stats
+        },
+        openStats(state){
+            state.stats = true
         }
     }
 })
 
 export default assignmentSlice.reducer
 
-export const {openModal,closeModal,openSideBar,closeSideBar,addAssessment} = assignmentSlice.actions
+export const {openModal,closeModal,openSideBar,closeSideBar,addAssessment,handleStats,openStats} = assignmentSlice.actions
 
